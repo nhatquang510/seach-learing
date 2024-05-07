@@ -11,12 +11,12 @@ load_dotenv()
 
 class Search:
     def __init__(self):
-        #self.es = Elasticsearch('http://localhost:9200') # for local development
+        self.es = Elasticsearch('http://localhost:9200') # for local development
         #elasticsearch_url = os.getenv("ELASTICSEARCH_URL")
-        self.es = Elasticsearch('https://n25v1lruze:3npiimenvf@spruce-256317558.us-east-1.bonsaisearch.net/')
+        #self.es = Elasticsearch('https://n25v1lruze:3npiimenvf@spruce-256317558.us-east-1.bonsaisearch.net/')
         client_info = self.es.info()
         print('Connected to Elasticsearch!')
-        pprint(client_info.body)
+        pprint(client_info)
 
     def create_index(self): #với mục đích dùng nhiều index, có thể dùng tên index làm argument.
         self.es.indices.delete(index='my_documents', ignore_unavailable=True)
